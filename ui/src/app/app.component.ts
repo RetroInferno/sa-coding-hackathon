@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
+import { CheckboxRequiredValidator } from '@angular/forms';
+import { SwUpdate, VersionEvent } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -8,22 +9,22 @@ import { SwUpdate } from '@angular/service-worker';
 })
 export class AppComponent {
   title = 'ui';
+  version: VersionEvent | undefined;
   constructor(private swUpdate: SwUpdate) {
     if (this.swUpdate.isEnabled) {
-      this.swUpdate.activated.subscribe((upd) => {
-        window.location.reload();
+      this.swUpdate.versionUpdates.subscribe((event) => {
+        this.version = event;
       });
-      this.swUpdate.available.subscribe(
-        (upd) => {
-          this.swUpdate.activateUpdate();
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+
       this.swUpdate
         .checkForUpdate()
-        .then(() => {})
+        .then((update: boolean) => {
+          console.log('Checked for updates, new SW?: ', update);
+          console.log(this.version);
+          if (update) {
+            window.location.reload();
+          }
+        })
         .catch((error) => {
           console.error('Could not check for app updates', error);
         });
