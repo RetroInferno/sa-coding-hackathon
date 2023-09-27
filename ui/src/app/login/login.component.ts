@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    window.location.assign('#/facilitator-home');
     this.api.login(this.userInfo).pipe().subscribe({next: data =>{
       console.log(data)
     }})

@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'wip', component: InProgressComponent },
   { path: 'home', component: HomeComponent },
   { path: 'classes', component: ClassesComponent },
-  { path: 'calendar', component: CalendarComponent },
+  { path: 'calendar', component: FacilitatorEventsComponent, canActivate: [facilitatorsGuard]},
   { path: 'chat', component: ScChatComponent },
   { path: 'assignments', component: AssigmentsComponent },
   { path: 'materials', component: MaterialsComponent },
