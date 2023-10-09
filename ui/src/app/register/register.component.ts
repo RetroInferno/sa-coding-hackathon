@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
     password: '',
   };
   confirmPass = '';
-  errMsg: string = '';
+  errMsg: string | undefined;
 
   constructor(private api: ApiService) {}
 
@@ -26,8 +26,14 @@ export class RegisterComponent implements OnInit {
     if (this.userInfo.password !== this.confirmPass)
       this.errMsg = 'passwords do not match';
     else
-      this.api
-        .registerUser(this.userInfo)
-        .subscribe({ next: (data) => console.log(data) });
+      this.api.registerUser(this.userInfo).subscribe({
+        next: (data) => {
+          console.log(data);
+          if (data.success === true) {
+            window.alert(data.message);
+            window.location.assign('#/login');
+          }
+        },
+      });
   }
 }

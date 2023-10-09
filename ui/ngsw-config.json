@@ -37,6 +37,16 @@
         "maxAge": "100d",
         "timeout": "10s"
       }
+    },
+    {
+      "name": "assets",
+      "urls": ["/"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 300,
+        "maxAge": "100d",
+        "timeout": "10s"
+      }
     }
   ]
 }

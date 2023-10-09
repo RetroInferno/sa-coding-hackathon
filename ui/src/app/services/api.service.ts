@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { UserInfo } from '../interfaces/apiDataTypes';
 
 /** SUPER WIP, WAITING ON FINALIZED ENDPOINTS */
 declare var API_URL: string;
@@ -17,7 +19,18 @@ export class ApiService {
   // ********************** Security Endpoints ********************** //
 
   login = (userInfo: { email: string; password: string }) => {
-    return this.client.post(`${this.url}/login`, userInfo);
+    // uncomment for production
+    // return this.client.post(`${this.url}/login`, userInfo);
+
+    // TEST DATA!!!
+    return of<UserInfo>({
+      email: userInfo.email,
+      id: 'TestID123456789',
+      firstName: 'Sample',
+      lastName: 'User',
+      role: 'FACILITATOR',
+      authenticated: true,
+    });
   };
 
   registerUser = (userInfo: {
@@ -26,7 +39,8 @@ export class ApiService {
     firstName: string;
     lastName: string;
   }) => {
-    return this.client.post(`${this.url}/register`, userInfo);
+    // return this.client.post(`${this.url}/register`, userInfo);
+    return of({ message: 'User Registered!', success: true });
   };
 
   /**

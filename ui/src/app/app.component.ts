@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SwUpdate, VersionEvent } from '@angular/service-worker';
+import { DatastoreService } from './services/datastore.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { SwUpdate, VersionEvent } from '@angular/service-worker';
 export class AppComponent {
   title = 'ui';
   version: VersionEvent | undefined;
-  constructor(private swUpdate: SwUpdate) {
+  constructor(private swUpdate: SwUpdate, dataStore: DatastoreService) {
     if (this.swUpdate.isEnabled) {
       this.swUpdate.versionUpdates.subscribe((event) => {
         this.version = event;

@@ -1,8 +1,8 @@
 {
-  "name": "ui",
-  "short_name": "ui",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Social Coding - South Africa",
+  "short_name": "SC/SA",
+  "theme_color": "#4CABAE",
+  "background_color": "#4CABAE",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

@@ -48,3 +48,14 @@ export interface User {
   role: 'ADMIN' | 'FACILITATOR' | 'LEARNER' | 'UNASSIGNED' | 'UNVERIFIED';
   batchId?: string;
 }
+
+/** For Login on Frontend */
+export interface UserInfo {
+  authenticated?: boolean;
+  id?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  role?: 'ADMIN' | 'FACILITATOR' | 'LEARNER' | 'UNASSIGNED' | 'UNVERIFIED';
+  batchId?: string;
+}

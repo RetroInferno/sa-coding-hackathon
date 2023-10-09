@@ -16,19 +16,43 @@ import { FacilitatorEventsComponent } from './components/facilitator-events/faci
 import { QuizzesComponent } from './quizzes/quizzes.component';
 
 const routes: Routes = [
-  { path: 'testingStuff', component: TestPageComponent },
+  { path: 'test', component: TestPageComponent },
   /** This Redirect will need to Change! */
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'wip', component: InProgressComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'classes', component: ClassesComponent },
-  { path: 'calendar', component: FacilitatorEventsComponent, canActivate: [facilitatorsGuard]},
+  {
+    path: 'wip',
+    component: InProgressComponent,
+    canActivate: [facilitatorsGuard],
+  },
+  { path: 'home', component: HomeComponent, canActivate: [facilitatorsGuard] },
+  {
+    path: 'classes',
+    component: ClassesComponent,
+    canActivate: [facilitatorsGuard],
+  },
+  {
+    path: 'calendar',
+    component: FacilitatorEventsComponent,
+    canActivate: [facilitatorsGuard],
+  },
   { path: 'chat', component: ScChatComponent },
-  { path: 'assignments', component: AssigmentsComponent },
-  { path: 'materials', component: MaterialsComponent },
-  { path: 'quizzes', component: QuizzesComponent },
+  {
+    path: 'assignments',
+    component: AssigmentsComponent,
+    canActivate: [facilitatorsGuard],
+  },
+  {
+    path: 'materials',
+    component: MaterialsComponent,
+    canActivate: [facilitatorsGuard],
+  },
+  {
+    path: 'quizzes',
+    component: QuizzesComponent,
+    canActivate: [facilitatorsGuard],
+  },
   {
     path: 'facilitator-home',
     component: FacilitatorHomeComponent,
@@ -46,7 +70,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
