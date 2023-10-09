@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CheckboxRequiredValidator } from '@angular/forms';
 import { SwUpdate, VersionEvent } from '@angular/service-worker';
 
 @Component({
